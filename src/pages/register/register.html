@@ -1,0 +1,72 @@
+<ion-header no-border>
+  <ion-navbar transparent color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="light"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  <div class="login-container">
+
+
+    <form [formGroup]="registerForm" (submit)="registerUser()" novalidate>
+
+      <ion-item>
+        <ion-label stacked>Usuario</ion-label>
+        <ion-input tappable formControlName="username" type="text" placeholder="Usuario"
+                   [class.invalid]="!registerForm.controls.username.valid && registerForm.controls.username.dirty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Nombres</ion-label>
+        <ion-input tappable formControlName="first_name" type="text" placeholder="Nombres"
+                   [class.invalid]="!registerForm.controls.first_name.valid && registerForm.controls.first_name.dirty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Apellidos</ion-label>
+        <ion-input tappable formControlName="last_name" type="text" placeholder="Apellidos"
+                   [class.invalid]="!registerForm.controls.last_name.valid && registerForm.controls.last_name.dirty"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Correo Electronico</ion-label>
+        <ion-input tappable formControlName="email" type="email" placeholder="Correo Electrónico"
+                   [class.invalid]="!registerForm.controls.email.valid && registerForm.controls.email.dirty"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Contraseña</ion-label>
+        <ion-input tappable formControlName="password1" type="password1" placeholder="Contraseña"
+                   [class.invalid]="!registerForm.controls.password1.valid && registerForm.controls.password1.dirty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Repetir Contraseña</ion-label>
+        <ion-input tappable formControlName="password2" type="password2" placeholder="Repetir Contraseña"
+                   [class.invalid]="!registerForm.controls.password2.valid && registerForm.controls.password2.dirty"></ion-input>
+      </ion-item>
+
+      <ion-item class="error-message">
+        <p *ngIf="!registerForm.controls.username.valid  &&
+                registerForm.controls.username.dirty">*Campo Requerido.</p>
+        <p *ngIf="!registerForm.controls.first_name.valid  &&
+                registerForm.controls.first_name.dirty">*Registre su nombre.</p>
+        <p *ngIf="!registerForm.controls.last_name.valid  &&
+                registerForm.controls.last_name.dirty">*Registre sus apellidos.</p>
+        <p *ngIf="!registerForm.controls.email.valid  &&
+                registerForm.controls.email.dirty">*Por favor registre un correo válido.</p>
+        <p *ngIf="!registerForm.controls.password1.valid  &&
+        registerForm.controls.password1.dirty">*La contraseña debe ser mayor a 6 caracteres</p>
+
+        <p *ngIf="!registerForm.controls.password2.valid  &&
+        registerForm.controls.password2.dirty">*Repita la contraseña escrita</p>
+      </ion-item>
+      <button ion-button full type="submit" mode="ios" color="blue2">
+        Crear Cuenta
+      </button>
+    </form>
+  </div>
+</ion-content>
+<ion-footer color="blue2">
+
+</ion-footer>
+

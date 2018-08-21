@@ -1,0 +1,65 @@
+<ion-header no-border>
+  <ion-navbar transparent color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu" color="light"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content [ngStyle]="{'background-image': 'url(' + backgroundImage +')'}">
+  <div class="login-container">
+
+
+    <form [formGroup]="registerForm" (submit)="registerUser()" novalidate>
+
+      <ion-item>
+        <ion-label stacked>Documento Identidad</ion-label>
+        <ion-input tappable formControlName="documento_identidad" type="text" placeholder="Documento Identidad"
+                   [class.invalid]="!registerForm.controls.documento_identidad.valid && registerForm.controls.documento_identidad.dirty"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tipo Usuario</ion-label>
+        <ion-select [(ngModel)]="gaming" okText="Okay" cancelText="Dismiss" interface="popover">
+          <ion-option value="nes">NES</ion-option>
+          <ion-option value="n64">Nintendo64</ion-option>
+          <ion-option value="ps">PlayStation</ion-option>
+          <ion-option value="genesis">Sega Genesis</ion-option>
+          <ion-option value="saturn">Sega Saturn</ion-option>
+          <ion-option value="snes">SNES</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>Direccion</ion-label>
+        <ion-input tappable formControlName="last_name" type="text" placeholder="Apellidos"
+                   [class.invalid]="!registerForm.controls.last_name.valid && registerForm.controls.last_name.dirty"></ion-input>
+      </ion-item>
+
+
+
+      <ion-item class="error-message">
+        <p *ngIf="!registerForm.controls.documento_identidad.valid  &&
+                registerForm.controls.documento_identidad.dirty">*Campo Requerido.</p>
+
+
+        <p *ngIf="!registerForm.controls.first_name.valid  &&
+                registerForm.controls.first_name.dirty">*Registre su nombre.</p>
+        <p *ngIf="!registerForm.controls.last_name.valid  &&
+                registerForm.controls.last_name.dirty">*Registre sus apellidos.</p>
+        <p *ngIf="!registerForm.controls.email.valid  &&
+                registerForm.controls.email.dirty">*Por favor registre un correo válido.</p>
+        <p *ngIf="!registerForm.controls.password1.valid  &&
+        registerForm.controls.password1.dirty">*La contraseña debe ser mayor a 6 caracteres</p>
+
+        <p *ngIf="!registerForm.controls.password2.valid  &&
+        registerForm.controls.password2.dirty">*Repita la contraseña escrita</p>
+      </ion-item>
+      <button ion-button full type="submit" mode="ios" color="blue2">
+        Crear Cuenta
+      </button>
+    </form>
+  </div>
+</ion-content>
+<ion-footer color="blue2">
+
+</ion-footer>
